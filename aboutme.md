@@ -16,4 +16,5 @@ What else do you need?
 My academic studies encompass a Bachelor's and Master's degree in
 AI from the University of Groningen, Netherlands and I am a current PhD
 student at the University of Oslo, specializing in Reinforcement Learning and Self-supervised Learning. I
-am set to complete my doctorate in September, 2024.
+am set to complete my doctorate in September, 2024. AI has continually fascinated me due to its potential to significantly transform our society and I
+am excited to contribute even more to this AI transition.
