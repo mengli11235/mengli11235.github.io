@@ -7,9 +7,6 @@ subtitle: Experienced PC/Video/Mobile Gamer
 My name is Li Meng. I have the following qualities:
 
 - I am a researcher in Artificial Intelligence (AI) and Machine Learning (ML)
-- I support Ukraine
-
-What else do you need?
 
 ### My story
 
