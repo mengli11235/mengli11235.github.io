@@ -10,8 +10,8 @@ My name is Li Meng, and I am passionate about the transformative power of Artifi
 
 ## Academic Background
 
-- **BSc \& MSc in Artificial Intelligence:** University of Groningen, Netherlands
-- **PhD in Reinforcement Learning \& Computer Vision:** University of Oslo, Norway
+- **BSc & MSc in Artificial Intelligence:** University of Groningen, Netherlands
+- **PhD in Reinforcement Learning & Computer Vision:** University of Oslo, Norway
 
 My studies have given me a solid foundation in AI theory and practical applications, with extensive experience in self-supervised learning, reinforcement learning, and computer vision.
 
