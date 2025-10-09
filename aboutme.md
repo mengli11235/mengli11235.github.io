@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About me
-subtitle: Experienced PC/Video/Mobile Gamer \& AI Researcher
+subtitle: Experienced PC/Video/Mobile Gamer & AI Researcher
 ---
 
 # Introduction
