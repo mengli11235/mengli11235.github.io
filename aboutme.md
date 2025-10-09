@@ -1,17 +1,38 @@
 ---
 layout: page
 title: About me
-subtitle: Experienced PC/Video/Mobile Gamer
+subtitle: Experienced PC/Video/Mobile Gamer \& AI Researcher
 ---
 
-My name is Li Meng. I have the following qualities:
+# Introduction
 
-- I am a researcher in Artificial Intelligence (AI) and Machine Learning (ML)
+My name is Li Meng, and I am passionate about the transformative power of Artificial Intelligence (AI) and Machine Learning (ML). My journey as a researcher and gamer has shaped my commitment to advancing technology and fostering innovation across disciplines.
 
-### My story
+## Academic Background
 
-My academic studies encompass a Bachelor's and Master's degree in
-AI from the University of Groningen, Netherlands and I am a current PhD
-student at the University of Oslo, specializing in Reinforcement Learning and Self-supervised Learning. I
-am set to complete my doctorate in September, 2024. AI has continually fascinated me due to its potential to significantly transform our society and I
-am excited to contribute even more to this AI transition.
+- **BSc \& MSc in Artificial Intelligence:** University of Groningen, Netherlands
+- **PhD in Reinforcement Learning \& Computer Vision:** University of Oslo, Norway
+
+My studies have given me a solid foundation in AI theory and practical applications, with extensive experience in self-supervised learning, reinforcement learning, and computer vision.
+
+## Research Contributions
+
+I am the author and co-author of multiple publications in leading conferences and journals:
+
+- **State Representation Learning Using an Unbalanced Atlas** (ICLR 2024): Novel paradigms for manifold-based self-supervised learning.
+- **Improving the Diversity of Bootstrapped DQN by Replacing Priors With Noise** (IEEE Transactions on Games 2022): Enhancements in Q-learning diversity and performance.
+
+
+## Technical Skills
+
+- **Programming languages:** C, C++, Java, Python, R, Matlab.
+- **Deep Learning Frameworks:** PyTorch, TensorFlow.
+- **Large Language Models:** Skilled in the usage and adaptation of state-of-the-art LLMs.
+- **Robotics:** Practical experience with ROS and robot control.
+- **Languages:** Native in Chinese; fluent in Japanese, English, and Norwegian.
+
+
+## Online Profiles
+
+- **GitHub:** mengli11235
+- **LinkedIn:** li-meng-394277293
