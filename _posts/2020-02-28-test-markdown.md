@@ -7,15 +7,13 @@ tags: [paper]
 comments: true
 ---
 
-# Exploring State Representation Learning Using an Unbalanced Atlas
-
 Representation learning is a key challenge in artificial intelligence, aiming to find efficient ways to represent high-dimensional data for downstream tasks like reinforcement learning and robotics. In our recent work, we introduce a novel self-supervised learning paradigm called the Unbalanced Atlas (UA), which significantly advances state representation learning for reinforcement learning.
 
 ### What is the Unbalanced Atlas?
 
 The Unbalanced Atlas is inspired by the manifold hypothesis—the idea that high-dimensional data often lies on lower-dimensional manifolds. Traditional manifold-based methods have shown promise but struggle to scale effectively in state-of-the-art self-supervised learning. UA addresses this by partitioning the encoding space unevenly, capturing complex data structures more flexibly and effectively than previous approaches.
 
-### Method \& Innovation
+### Method & Innovation
 
 Built upon the Spatiotemporal DeepInfomax (ST-DIM) framework, our method (DIM-UA) innovatively adapts the model to leverage the UA concept. This allows the model to learn richer, more informative state representations by aligning the learning process with the data’s intrinsic manifold structure.
 
