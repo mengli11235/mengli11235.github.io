@@ -16,7 +16,7 @@ author: Li Meng
 navbar-links:
   About Me: "aboutme"
   Resources:
-    - Blogs: "/_posts"
+    - Blogs: "/blogs"
 # --- Logo --- #
 
 # Image to show in the navigation bar - works best with a square image
