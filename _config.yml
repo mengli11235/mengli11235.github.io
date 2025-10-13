@@ -19,7 +19,7 @@ paginate_path: "/publications/page:num/"
 navbar-links:
   About Me: "aboutme"
   Resources:
-    - Blog: "/publications"
+    - Papers: "/publications"
 # --- Logo --- #
 
 # Image to show in the navigation bar - works best with a square image
