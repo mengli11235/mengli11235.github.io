@@ -13,6 +13,9 @@ author: Li Meng
 
 # --- List of links in the navigation bar --- #
 
+paginate: 10
+paginate_path: "/blog/page:num/"
+
 navbar-links:
   About Me: "aboutme"
   Resources:
