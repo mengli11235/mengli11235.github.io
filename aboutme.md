@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About me
+title: About Me
 subtitle: Experienced PC/Video/Mobile Gamer & AI Researcher
 ---
 
