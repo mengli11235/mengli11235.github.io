@@ -29,4 +29,4 @@ I am the author and co-author of multiple publications in leading conferences an
 - **Deep Learning Frameworks:** PyTorch, TensorFlow.
 - **Large Language Models:** Skilled in the usage and adaptation of state-of-the-art LLMs.
 - **Robotics:** Practical experience with ROS and robot control.
-- **Languages:** Native in Chinese; fluent in Japanese, English, and Norwegian.
+- **Languages:** Chinese, English, Japanese, Norwegian.
