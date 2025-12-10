@@ -39,6 +39,26 @@
   opacity: 0.9;
 }
 
+.profile-photo-container {
+  margin-bottom: 30px;
+  animation: fadeInDown 0.8s ease-out;
+}
+
+.profile-photo {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 5px solid white;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+  object-fit: cover;
+  transition: all 0.4s ease;
+}
+
+.profile-photo:hover {
+  transform: scale(1.08) rotate(2deg);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+}
+
 .cta-buttons {
   margin-top: 30px;
 }
