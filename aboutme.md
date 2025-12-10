@@ -1,32 +1,47 @@
 ---
 layout: page
 title: About Me
-subtitle: Experienced PC/Video/Mobile Gamer & AI Researcher
+subtitle: AI Researcher | Self-Supervised Learning | Reinforcement Learning
 ---
 
-# Introduction
+## Introduction
 
-My name is Li Meng, and I am passionate about the transformative power of artificial intelligence and machine learning. My journey as a researcher and gamer has shaped my commitment to advancing technology and fostering innovation across disciplines.
+I'm a researcher at OsloMet specializing in self-supervised learning and reinforcement learning. My work bridges theoretical advances in AI with practical applications.
 
-## Academic Background
+## Academic Journey
 
-- **BSc & MSc in Artificial Intelligence:** University of Groningen, Netherlands
-- **PhD in Reinforcement Learning & Self-Supervised Learning:** University of Oslo, Norway
+- **PhD in Computer Science** (2025) - University of Oslo, Norway  
+  *Thesis: State Representations in Reinforcement Learning*
+  
+- **MSc in Artificial Intelligence** (2020) - University of Groningen, Netherlands
 
-My studies have given me a solid foundation in AI theory and practical applications, with extensive experience in self-supervised learning, reinforcement learning, and computer vision.
+- **BSc in Artificial Intelligence** (2017) - University of Groningen, Netherlands
 
-## Research Contributions
+## Research Interests
 
-I am the author and co-author of multiple publications in leading conferences and journals:
+- Self-supervised representation learning
+- Deep reinforcement learning
+- Computer vision and robotics
+- LLM
 
-- **State Representation Learning Using an Unbalanced Atlas** (ICLR 2024): Novel paradigms for manifold-based self-supervised learning.
-- **Improving the Diversity of Bootstrapped DQN by Replacing Priors With Noise** (IEEE Transactions on Games 2022): Enhancements in Q-learning diversity and performance.
+## Selected Publications
 
+**State Representation Learning Using an Unbalanced Atlas**  
+*ICLR 2024* - Novel paradigms for manifold-based self-supervised learning
+
+**Improving the Diversity of Bootstrapped DQN**  
+*IEEE Transactions on Games 2022* - Enhancements in Q-learning diversity
+
+[→ See all publications](/publications)
 
 ## Technical Skills
 
-- **Programming languages:** C, C++, Java, Python, R, Matlab.
-- **Deep Learning Frameworks:** PyTorch, TensorFlow.
-- **Large Language Models:** Skilled in the usage and adaptation of state-of-the-art LLMs.
-- **Robotics:** Practical experience with ROS and robot control.
-- **Languages:** Chinese, English, Japanese, Norwegian.
+**Programming:** Python, C++, Java, R, MATLAB  
+**Frameworks:** PyTorch, TensorFlow, ROS  
+**Specialized:** Large Language Models, Computer Vision, Robotics  
+**Languages:** English, Chinese, Norwegian, Japanese
+
+## Contact
+
+**Email:** li.meng@oslomet.no  
+**Location:** Oslo, Norway
