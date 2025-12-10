@@ -1,8 +1,8 @@
 /* Hero Section - Vibrant Gradient */
 .hero-section {
-  background: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
-  background: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
-  background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 50%, #fbc2eb 100%);
   /* Alternative modern gradients - choose one: */
   /* Sunset: linear-gradient(120deg, #f093fb 0%, #f5576c 100%); */
   /* Ocean: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%); */
