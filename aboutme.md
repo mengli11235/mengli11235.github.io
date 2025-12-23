@@ -10,7 +10,7 @@ I'm a researcher at OsloMet specializing in self-supervised learning and reinfor
 
 ## Academic Journey
 
-- **PhD in Computer Science** (2025) - University of Oslo, Norway  
+- **PhD in Artificial Intelligence** (2025) - University of Oslo, Norway  
   *Thesis: State Representations in Reinforcement Learning*
   
 - **MSc in Artificial Intelligence** (2020) - University of Groningen, Netherlands
