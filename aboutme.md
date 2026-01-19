@@ -32,7 +32,7 @@ I'm a researcher at OsloMet specializing in self-supervised learning and reinfor
 **Improving the Diversity of Bootstrapped DQN**  
 *IEEE Transactions on Games 2022* - Enhancements in Q-learning diversity
 
-[→ See all publications](/publications)
+[→ See publications](/publications)
 
 ## Technical Skills
 
