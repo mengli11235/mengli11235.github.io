@@ -6,7 +6,7 @@ subtitle: AI Researcher | Self-Supervised Learning | Reinforcement Learning
 
 ## Introduction
 
-I'm a researcher at OsloMet specializing in self-supervised learning and reinforcement learning. My work bridges theoretical advances in AI with practical applications.
+I'm a researcher at UiO specializing in self-supervised learning and reinforcement learning. My work bridges theoretical advances in AI with practical applications.
 
 ## Academic Journey
 
@@ -43,5 +43,5 @@ I'm a researcher at OsloMet specializing in self-supervised learning and reinfor
 
 ## Contact
 
-**Email:** li.meng@oslomet.no  
+**Email:** limeng@uio.no  
 **Location:** Oslo, Norway
