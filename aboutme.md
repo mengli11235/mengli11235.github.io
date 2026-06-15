@@ -43,5 +43,5 @@ I'm a researcher at UiO specializing in self-supervised learning and reinforceme
 
 ## Contact
 
-**Email:** limeng@uio.no  
+**Email:** mengli11235@hotmail.com  
 **Location:** Oslo, Norway
