@@ -1,0 +1,20 @@
+title: Li Meng
+url: "https://www.meng.science"
+baseurl: ""
+description: "Li Meng is an AI researcher working on self-supervised learning, reinforcement learning, state representation, and AI for brain and health."
+author:
+  name: Li Meng
+  email: mengli11235@hotmail.com
+  github: mengli11235
+  linkedin: li-meng-394277293
+  orcid: 0000-0002-8867-9104
+  scholar: rsFvtdoAAAAJ
+markdown: kramdown
+permalink: /writing/:title/
+future: true
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - preview.png
+  - source-notes.md

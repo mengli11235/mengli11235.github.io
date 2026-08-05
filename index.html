@@ -1,0 +1,81 @@
+---
+layout: default
+title:
+description: Li Meng is a postdoctoral AI researcher at the University of Oslo, working on self-supervised learning, reinforcement learning, representation learning, and AI for brain and health.
+---
+<section class="hero shell">
+  <div class="hero-copy reveal">
+    <p class="eyebrow">AI researcher · University of Oslo</p>
+    <h1>Learning representations that preserve <em>structure</em>.</h1>
+    <p class="hero-intro">I study how intelligent systems can discover useful latent structure—from interactive visual worlds to neural and medical data—using self-supervised learning, reinforcement learning, and geometry-aware modeling.</p>
+    <div class="hero-actions">
+      <a class="button button-primary" href="{{ '/publications/' | relative_url }}">Explore publications {% include icons.html icon='arrow' %}</a>
+      <a class="button button-quiet" href="mailto:{{ site.author.email }}">{% include icons.html icon='mail' %} Get in touch</a>
+    </div>
+    <div class="identity-strip">
+      <span>Postdoctoral Researcher & AI Scientist</span>
+      <span>Oslo, Norway</span>
+      <a href="https://scholar.google.com/citations?user={{ site.author.scholar }}">Google Scholar ↗</a>
+    </div>
+  </div>
+  <div class="hero-visual reveal" aria-label="Abstract visualization connecting state representations, neural signals, and learned structure">
+    <div class="portrait-frame"><img src="{{ '/assets/img/li-meng.jpg' | relative_url }}" alt="Portrait of Li Meng"></div>
+    <svg class="research-map" viewBox="0 0 620 520" role="img" aria-label="Research map">
+      <defs><linearGradient id="signal" x1="0" x2="1"><stop stop-color="currentColor" stop-opacity=".16"/><stop offset="1" stop-color="currentColor" stop-opacity=".8"/></linearGradient></defs>
+      <path class="orbit orbit-a" d="M91 348C157 180 302 93 500 139"/>
+      <path class="orbit orbit-b" d="M116 416C254 490 474 418 529 259"/>
+      <path class="signal-line" d="M58 266c22 0 22-35 44-35s22 79 44 79 22-122 44-122 22 151 44 151 22-98 44-98 22 42 44 42 22-19 44-19 22 7 44 7 22-47 44-47 22 82 44 82 22-36 44-36"/>
+      <g class="map-node node-a"><circle cx="92" cy="348" r="34"/><text x="92" y="345">SSL</text><text class="node-small" x="92" y="362">structure</text></g>
+      <g class="map-node node-b"><circle cx="500" cy="139" r="42"/><text x="500" y="136">RL</text><text class="node-small" x="500" y="153">decision</text></g>
+      <g class="map-node node-c"><circle cx="529" cy="259" r="52"/><text x="529" y="255">Brain</text><text class="node-small" x="529" y="274">& health</text></g>
+      <g class="map-node node-d"><circle cx="116" cy="416" r="44"/><text x="116" y="412">Geometry</text><text class="node-small" x="116" y="431">manifolds</text></g>
+      <circle class="pulse-dot p1" cx="273" cy="182" r="5"/><circle class="pulse-dot p2" cx="381" cy="419" r="5"/>
+    </svg>
+  </div>
+</section>
+
+<section class="statement band">
+  <div class="shell statement-grid reveal">
+    <p class="eyebrow">Research question</p>
+    <blockquote>How can a model learn representations that remain useful when observations are incomplete, labels are scarce, and the underlying structure matters?</blockquote>
+  </div>
+</section>
+
+<section class="section shell">
+  <div class="section-heading reveal"><div><p class="eyebrow">Selected research</p><h2>Three connected directions</h2></div><a class="text-link" href="{{ '/research/' | relative_url }}">Research overview {% include icons.html icon='arrow' %}</a></div>
+  <div class="research-grid">
+    <article class="research-card reveal"><span class="card-index">01</span><h3>Self-supervised representation learning</h3><p>Designing objectives that reveal latent factors without relying on dense annotation—from contrastive prediction to geometry-aware embedding spaces.</p><div class="mini-diagram bars"><i></i><i></i><i></i><i></i><i></i></div></article>
+    <article class="research-card reveal"><span class="card-index">02</span><h3>Reinforcement learning under uncertainty</h3><p>Studying state, memory, exploration, and visual backbones for agents operating in partially observable and high-dimensional environments.</p><div class="mini-diagram path"><i></i><i></i><i></i><i></i></div></article>
+    <article class="research-card reveal"><span class="card-index">03</span><h3>AI for brain & health</h3><p>Translating representation learning into robust models for neural signals, medical platforms, and early cognitive-health applications.</p><div class="mini-diagram waves"><i></i><i></i><i></i></div></article>
+  </div>
+</section>
+
+<section class="section shell featured-section">
+  <div class="section-heading reveal"><div><p class="eyebrow">Featured work</p><h2>Research with a clear idea</h2></div><a class="text-link" href="{{ '/publications/' | relative_url }}">All publications {% include icons.html icon='arrow' %}</a></div>
+  <div class="featured-list">
+  {% assign featured = site.data.publications | where: 'featured', true %}
+  {% for pub in featured limit:4 %}
+    <article class="featured-paper reveal">
+      <div class="paper-year">{{ pub.year }}</div>
+      <div><div class="paper-kicker">{{ pub.type }} · {{ pub.venue }}</div><h3>{{ pub.title }}</h3><p>{{ pub.summary }}</p><div class="tag-row">{% for tag in pub.tags limit:3 %}<span>{{ tag }}</span>{% endfor %}</div></div>
+      <div class="paper-links">{% if pub.links.paper %}<a href="{{ pub.links.paper }}">Paper ↗</a>{% endif %}{% if pub.links.arxiv %}<a href="{{ pub.links.arxiv }}">arXiv ↗</a>{% endif %}{% if pub.links.code %}<a href="{{ pub.links.code }}">Code ↗</a>{% endif %}{% if pub.links.article %}<a href="{{ pub.links.article | relative_url }}">Read note →</a>{% endif %}</div>
+    </article>
+  {% endfor %}
+  </div>
+</section>
+
+<section class="section band">
+  <div class="shell news-layout">
+    <div class="section-heading vertical reveal"><p class="eyebrow">Now & recent</p><h2>Research notes</h2><p>A compact record of appointments, talks, milestones, and new work.</p></div>
+    <ol class="timeline">
+      {% for item in site.data.news %}<li class="reveal"><time>{{ item.date }}</time><p>{% if item.url %}<a href="{{ item.url }}">{{ item.text }}</a>{% else %}{{ item.text }}{% endif %}</p></li>{% endfor %}
+    </ol>
+  </div>
+</section>
+
+<section class="section shell writing-preview">
+  <div class="section-heading reveal"><div><p class="eyebrow">Writing</p><h2>Ideas behind the papers</h2></div><a class="text-link" href="{{ '/writing/' | relative_url }}">All writing {% include icons.html icon='arrow' %}</a></div>
+  <div class="post-grid">
+    {% for post in site.posts limit:3 %}<a class="post-card reveal" href="{{ post.url | relative_url }}"><div><p class="post-card-meta">{{ post.date | date: '%Y.%m.%d' }} · {{ post.reading_time }} min</p><h3>{{ post.title }}</h3><p>{{ post.subtitle }}</p></div><span>Read article {% include icons.html icon='arrow' %}</span></a>{% endfor %}
+  </div>
+</section>

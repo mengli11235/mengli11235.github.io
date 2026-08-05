@@ -1,0 +1,78 @@
+- year: 2024
+  featured: true
+  title: State Representation Learning Using an Unbalanced Atlas
+  authors: Li Meng, Morten Goodwin, Anis Yazidi, Paal E. Engelstad
+  venue: ICLR 2024
+  type: Conference
+  summary: A manifold-based self-supervised learning paradigm that scales state representations to high-dimensional target spaces.
+  tags: [Self-supervised learning, Manifold learning, Reinforcement learning]
+  links:
+    paper: https://openreview.net/forum?id=cWdAYDLmPa
+    arxiv: https://arxiv.org/abs/2305.10267
+    code: https://github.com/mengli11235/DIM-UA
+    article: /writing/unbalanced-atlas/
+- year: 2024
+  featured: true
+  title: Maximum Manifold Capacity Representations in State Representation Learning
+  authors: Li Meng, Morten Goodwin, Anis Yazidi, Paal Engelstad
+  venue: arXiv preprint
+  type: Preprint
+  summary: Extends manifold-aware state representation learning with a nuclear-norm objective and a more efficient route to manifold-capacity regularization.
+  tags: [Manifold capacity, Representation learning, Atari]
+  links:
+    arxiv: https://arxiv.org/abs/2405.13848
+- year: 2024
+  featured: false
+  title: A Manifold Representation of the Key in Vision Transformers
+  authors: Li Meng, Morten Goodwin, Anis Yazidi, Paal Engelstad
+  venue: arXiv preprint
+  type: Preprint
+  summary: Studies decoupled query–key–value construction and introduces manifold structure into the key representation of vision transformers.
+  tags: [Vision transformers, Manifold learning, Attention]
+  links:
+    arxiv: https://arxiv.org/abs/2402.00534
+- year: 2023
+  featured: true
+  title: Unsupervised State Representation Learning in Partially Observable Atari Games
+  authors: Li Meng, Morten Goodwin, Anis Yazidi, Paal Engelstad
+  venue: CAIP 2023
+  type: Conference
+  summary: Develops an unsupervised state representation scheme for partially observable environments and evaluates it on Atari-based benchmarks.
+  tags: [Partial observability, State representation, Contrastive learning]
+  links:
+    arxiv: https://arxiv.org/abs/2303.07437
+    code: https://github.com/mengli11235/MST_DIM
+    article: /writing/partial-observability/
+- year: 2022
+  featured: true
+  title: Improving the Diversity of Bootstrapped DQN by Replacing Priors With Noise
+  authors: Li Meng, Morten Goodwin, Anis Yazidi, Paal Engelstad
+  venue: IEEE Transactions on Games
+  type: Journal
+  summary: Replaces fixed randomized priors with Gaussian noise to sustain ensemble diversity and improve deep exploration in Atari games.
+  tags: [Deep reinforcement learning, Exploration, DQN]
+  links:
+    arxiv: https://arxiv.org/abs/2203.01004
+    code: https://github.com/mengli11235/Bootstrapped-DQN-with-NP
+    article: /writing/noisy-priors/
+- year: 2022
+  featured: false
+  title: "Expert Q-learning: Deep Reinforcement Learning with Coarse State Values from Offline Expert Examples"
+  authors: Li Meng, Anis Yazidi, Morten Goodwin, Paal Engelstad
+  venue: NLDL 2022
+  type: Conference
+  summary: Incorporates coarse expert state-value information into deep Q-learning to guide online learning from limited demonstrations.
+  tags: [Expert knowledge, Q-learning, Offline examples]
+  links:
+    arxiv: https://arxiv.org/abs/2106.14642
+- year: 2022
+  featured: false
+  title: Deep Reinforcement Learning with Swin Transformers
+  authors: Li Meng, Morten Goodwin, Anis Yazidi, Paal Engelstad
+  venue: arXiv preprint
+  type: Preprint
+  summary: Investigates Swin Transformer backbones for online deep reinforcement learning across a large suite of Atari games.
+  tags: [Swin Transformer, Deep RL, Visual learning]
+  links:
+    arxiv: https://arxiv.org/abs/2206.15269
+    code: https://github.com/mengli11235/SWIN-DQN

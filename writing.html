@@ -1,0 +1,8 @@
+---
+layout: default
+title: Writing
+permalink: /writing/
+description: Accessible research notes by Li Meng on self-supervised learning and reinforcement learning.
+---
+<header class="page-hero shell-narrow reveal"><p class="eyebrow">Writing</p><h1>Research, explained from the inside.</h1><p class="page-deck">Short essays about the questions, design choices, and intuitions behind my work. These articles complement the formal papers; they do not replace them.</p></header>
+<section class="writing-index shell"><div class="post-list">{% for post in site.posts %}<a class="post-row reveal" href="{{ post.url | relative_url }}"><div><p class="post-card-meta">{{ post.date | date: '%B %d, %Y' }} · {{ post.reading_time }} min read</p><h2>{{ post.title }}</h2><p>{{ post.subtitle }}</p><div class="tag-row">{% for tag in post.tags %}<span>{{ tag }}</span>{% endfor %}</div></div><span class="post-arrow">↗</span></a>{% endfor %}</div></section>

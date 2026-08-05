@@ -1,0 +1,12 @@
+---
+layout: default
+title: Publications
+permalink: /publications/
+description: Publications by Li Meng on self-supervised learning, reinforcement learning, manifold representations, and vision transformers.
+---
+<header class="page-hero shell-narrow reveal"><p class="eyebrow">Publications</p><h1>Selected papers and preprints.</h1><p class="page-deck">A curated list of work on representation learning and reinforcement learning. For citation counts and the most current index, visit <a href="https://scholar.google.com/citations?user={{ site.author.scholar }}">Google Scholar</a> or <a href="https://dblp.org/pid/69/5755-2.html">DBLP</a>.</p></header>
+<section class="publication-page shell">
+  <div class="filter-bar reveal" role="group" aria-label="Filter publications"><button class="active" data-filter="all">All</button><button data-filter="Conference">Conference</button><button data-filter="Journal">Journal</button><button data-filter="Preprint">Preprints</button></div>
+  {% assign years = site.data.publications | group_by: 'year' %}
+  {% for year in years %}<section class="pub-year"><h2>{{ year.name }}</h2><div class="pub-list">{% for pub in year.items %}<article class="pub-item reveal" data-type="{{ pub.type }}"><div class="pub-marker"></div><div><p class="paper-kicker">{{ pub.type }} · {{ pub.venue }}</p><h3>{{ pub.title }}</h3><p class="authors">{{ pub.authors }}</p><p>{{ pub.summary }}</p><div class="tag-row">{% for tag in pub.tags %}<span>{{ tag }}</span>{% endfor %}</div><div class="inline-links">{% if pub.links.paper %}<a href="{{ pub.links.paper }}">Paper ↗</a>{% endif %}{% if pub.links.arxiv %}<a href="{{ pub.links.arxiv }}">arXiv ↗</a>{% endif %}{% if pub.links.code %}<a href="{{ pub.links.code }}">Code ↗</a>{% endif %}{% if pub.links.article %}<a href="{{ pub.links.article | relative_url }}">Research note →</a>{% endif %}</div></div></article>{% endfor %}</div></section>{% endfor %}
+</section>
