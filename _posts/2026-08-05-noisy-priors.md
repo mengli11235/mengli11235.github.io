@@ -1,41 +1,29 @@
 ---
 layout: post
-title: "Exploration Needs Disagreement: Noise, Priors, and Bootstrapped DQN"
-subtitle: "Why ensemble diversity is not a cosmetic property but a mechanism for deep exploration."
+title: "Exploration needs disagreement"
+subtitle: "Bootstrapped DQN explores well only while its heads disagree. A little zero-mean noise in each head's training target helps keep them apart."
 date: 2026-08-05 09:00:00 +0200
-reading_time: 6
+reading_time: 5
 tags: [Deep reinforcement learning, Exploration, DQN]
 ---
-Exploration is often described as choosing a random action occasionally. That works for local uncertainty, but it is weak when useful behavior requires a long sequence of coordinated choices.
+The textbook way to explore in deep Q-learning is epsilon-greedy. Most of the time the agent takes the action with the highest estimated value, and occasionally it takes a random one. That works when a useful discovery is one or two random steps away. It works badly when the reward sits at the end of a long and specific sequence of actions, because independent random choices at every step almost never string together into that sequence. Many Atari games are built exactly that way.
 
-Bootstrapped DQN offers a different perspective. Multiple value-function heads are trained in parallel, and each head can represent a distinct plausible estimate of the environment. Acting according to one sampled head produces temporally extended behavior: the agent follows a coherent hypothesis rather than injecting independent randomness at every step.
+Bootstrapped DQN replaces per-step randomness with something closer to commitment. One network body feeds several output heads, and each head is its own estimate of the Q-function, trained on a different bootstrap sample of the replay data. At the start of each episode the agent picks one head at random and follows it for the whole episode. If that head happens to believe an unexplored part of the game is valuable, the agent goes there and keeps going, instead of taking one random step and turning back. Disagreement between heads turns into exploration that is consistent over time. At evaluation the heads vote.
 
-## Diversity is the engine
+All of this depends on the heads actually disagreeing. They share a body, they see largely the same data, and they are all pulled toward the same Bellman targets. Over many updates they tend to converge, and once they have converged, sampling a head is no different from using a single network, only more expensive. Randomized prior functions were proposed to counter this. Each head gets a fixed, randomly initialised network added to its output, which it cannot train away. Our starting point was that a fixed prior is still something the trainable part can learn to compensate for, and that its effect on diversity fades after many updates.
 
-The mechanism only works when the heads remain meaningfully different. If every head converges to nearly the same value function, the ensemble becomes computationally expensive duplication.
+Our variant, which we called Boot-DQN+NP, leaves the network alone. Instead of adding a fixed prior to each head's output, we add zero-mean Gaussian noise to each head's training target. Every head gets its own noise sample for every transition, and the noise is drawn again at every network update, so there is nothing stable for a head to learn to cancel. The size of the noise follows the current value estimates. Its scale is one plus a small factor β times the largest predicted Q-value, with β = 0.05. A fixed scale would make little sense in games where values range over several orders of magnitude, and tying it to the values keeps the perturbation in proportion to what the head currently believes.
 
-Randomized prior functions were introduced to preserve differences between heads. Our work asks whether fixed priors are the only way to achieve this goal. We replace the priors with Gaussian noise and examine whether stochastic variation can sustain useful diversity.
+One way to see the effect is that the noise prevents early agreement. Each head is trained toward a slightly different version of the target on every update. In states the agent has rarely visited, the heads keep different opinions. In states with plenty of data, the zero-mean noise averages out and the heads are pulled back together. The ensemble stays uncertain where it has reason to be, which is what exploration needs.
 
-## Why noise can help
+We used the same 49 Atari games as the original Bootstrapped DQN paper, trained each agent for 200 million frames and evaluated every 250,000 steps. Our implementation uses nine heads and a bootstrap probability of 0.9, with Adam, a smooth L1 loss and reward clipping during training. To isolate the effect of the noise, the main comparison is against our own implementation with identical settings and no noise. Published results for the original Bootstrapped DQN, Double DQN and the Nature DQN are included for context.
 
-A fixed prior establishes a persistent bias. Noise instead creates continuing perturbations during learning. The objective is not to make predictions arbitrarily unstable; it is to prevent premature collapse to one shared estimate before the agent has collected enough evidence.
+With noise, the agent matched or beat the noiseless version in 30 of the 49 games by maximum score, and in 33 of the 49 by final score after 200 million frames. Some of the improvements are large. Asteroids went from 3,320 to 8,960, Demon Attack from 28,475 to 35,255, Beam Rider from 28,850 to 34,936 and Asterix from 40,900 to 46,500. On a human-normalised performance profile, the noisy version has a heavier tail above twice human performance. The learning curves often show it escaping plateaus where the noiseless agent stalls, and in Asteroids and Tennis its Q-value estimates are noticeably more stable.
 
-This highlights an important distinction:
+It is not a uniform win. Venture fell from 1,700 to 0, Private Eye from 15,100 to 4,000 and Time Pilot from 15,700 to 8,600, and Frostbite, Gravitar and Chopper Command went down as well. The noise level also has a ceiling. With β much above 0.05, the noise feeds overestimation and training breaks down. And with five evaluation episodes per point, any single number carries real variance. A fair summary is that noise helps in about two thirds of the games, sometimes by a lot, and hurts in a minority that deserves closer study.
 
-- **Unstructured action noise** changes what the agent does at one moment.
-- **Value-function diversity** changes the agent’s belief about which long-term strategy may be promising.
+The paper treats diversity informally, as the number of reasonable moves an agent can take in a given state, and infers it from learning curves and Q-value trajectories rather than measuring disagreement between heads directly. A direct measure, such as the spread of the heads' predictions on held-out states over the course of training, would make the mechanism much easier to test.
 
-The second form is better suited to deep exploration because it can influence a sequence of actions consistently.
+The directions in the paper's discussion still look right. A noisy ensemble could be combined with Go-Explore, sticky actions would make the environment itself stochastic, and a world model or self-supervised features would give the heads something richer than raw Q-values to disagree about. More generally, an ensemble is only useful while its members disagree for good reasons. That holds whether the members estimate Q-values, classify medical scans or predict cognitive decline, and keeping the disagreement alive until the data justify agreement is a design problem in its own right.
 
-## What we observed
-
-Across the reported Atari experiments, replacing priors with noise improved the evaluation performance of Bootstrapped DQN relative to the compared variants. The findings support the interpretation that maintaining ensemble diversity is central to the algorithm rather than an incidental side effect.
-
-## Broader implications
-
-The same principle appears in uncertainty estimation, active learning, and scientific modeling: a useful ensemble should preserve multiple plausible explanations until evidence justifies convergence. Diversity is valuable when it is structured, consequential, and connected to decision-making.
-
-## References
-
-- [Improving the Diversity of Bootstrapped DQN by Replacing Priors With Noise](https://arxiv.org/abs/2203.01004)
-- [Code repository](https://github.com/mengli11235/Bootstrapped-DQN-with-NP)
+The paper was published in [IEEE Transactions on Games](https://doi.org/10.1109/TG.2022.3185330). There is also an [arXiv version](https://arxiv.org/abs/2203.01004), and the implementation is on [GitHub](https://github.com/mengli11235/Bootstrapped-DQN-with-NP).

@@ -1,38 +1,33 @@
 ---
 layout: post
-title: "What Should a Representation Remember When the World Is Partially Observable?"
-subtitle: "Partial observability turns representation learning from image compression into an inference problem."
+title: "What should a representation remember when the world is partially observable?"
+subtitle: "Hide part of each frame from the encoder, ask it to recognise the next full frame anyway, and it learns to infer what it cannot see."
 date: 2026-08-04 10:00:00 +0200
 reading_time: 6
 tags: [Reinforcement learning, Partial observability, State representation]
 ---
-Most reinforcement-learning benchmarks present an agent with observations, not states. A frame tells the agent what is visible now; it may not reveal velocity, hidden objects, delayed consequences, or the event that occurred one moment earlier.
+Reinforcement learning is written down in terms of states, but agents receive observations. In Atari the gap between the two is usually small, which is part of why the games became a standard benchmark. A frame shows most of what matters, although even there a single frame does not tell you which way the ball is moving. In most real settings the gap is much wider. A camera is partly blocked, a sensor drops out, an EEG channel is swamped by artefacts for a few seconds. Whatever representation the agent learns has to work from observations that are missing part of the state.
 
-That distinction changes the representation-learning problem. In a fully observable setting, a compact encoding of the current frame may be sufficient. In a partially observable setting, a useful representation must help infer the latent state from incomplete evidence.
+Our [CAIP 2023 paper](https://doi.org/10.1007/978-3-031-44240-7_21) looked at a narrow version of that problem. Contrastive methods had become the strongest way to learn state representations from Atari frames without labels, and Spatiotemporal DeepInfomax (ST-DIM) was the best of them on the AtariARI benchmark, although it still trailed an encoder trained with supervision on the labels. What happens to these methods when the frames are only partly visible had not been studied carefully. We made the frames partially observable on purpose and measured what an unsupervised objective could still recover.
 
-## The hidden variable behind the image
+The setup is deliberately simple. We cover part of each frame with random noise, using a mask drawn from a binomial distribution, so a mask ratio of 0.4 means that 40% of the frame is hidden. We pretrained encoders at ratios from 0.2 to 0.8 and evaluated them on frames masked at 0.4. AtariARI keeps the evaluation honest, because it reads the game's RAM and gives every frame ground-truth labels: where the agent is, where small objects such as the ball are, where other objects are, and the score, clock and lives counters. After pretraining, the encoder is frozen and a linear probe is trained for each variable. If the probe can read a variable off the representation, the representation has kept it. We used 20 games, with frames collected by a random agent.
 
-Consider a ball moving across a screen. One image provides position but not direction. Two nearby frames reveal motion. The task-relevant variable is therefore not contained in a single observation; it must be inferred from temporal context.
+ST-DIM learns from pairs of consecutive frames. Its global-local objective asks the representation of the frame at time *t* to identify local patches of the frame at *t*+1, and its local-local objective does the same patch by patch. Our change, which we called MST-DIM, is small. The anchor frame at time *t* is masked, and the target frame at *t*+1 is left complete. Both InfoNCE terms are otherwise unchanged, as are the encoder, the hyperparameters and the probing protocol, so any difference in the results comes from the masking.
 
-This is why partial observability is not just an augmentation problem. Randomly masking pixels can improve robustness, but it does not by itself specify what the representation should remember across time.
+That asymmetry changes what the objective rewards. With an unmasked anchor, the encoder can match the next frame largely by describing what it sees. With a masked anchor, it has to produce a representation of the present that still identifies the complete next frame, although part of the present is missing. The only way to do that is to infer the hidden part from what remains visible and from what it has learned about how the game behaves. The objective asks the representation to remember the state, not the picture.
 
-## Learning from temporal relationships
+The effect is large. With 40% of each frame hidden, standard ST-DIM falls to a mean F1 of 0.34 and the supervised encoder to 0.33. MST-DIM reaches 0.64, with a mean accuracy of 0.66 against 0.38 for both baselines. For comparison, the fully observable setting scores 0.70, so masking costs MST-DIM surprisingly little. It beat standard ST-DIM in all 20 games, sometimes by a wide margin. Pong went from 0.13 to 0.71, Bowling from 0.29 to 0.90, Boxing from 0.11 to 0.53 and Tennis from 0.13 to 0.48.
 
-Our work extends a spatiotemporal contrastive representation-learning framework for partially observable Atari environments. The learning signal asks the encoder to preserve information that remains predictive across local space and time.
+The supervised result runs against intuition and deserves a comment. A supervised encoder sees the labels and is trained to predict them directly, so you would expect it to set the upper bound. Under partial observability it does no better than standard ST-DIM. Part of the reason is mechanical. Small objects such as a ball cover only a few pixels and can vanish entirely under a mask, in which case the label refers to something that is not in the input at all. The paper also attributes much of the drop to the lack of a good initialisation, which hurts both baselines in the same way. The masked objective sidesteps that problem because it can only be solved by modelling how the game behaves, and that knowledge is exactly what makes the hidden part predictable.
 
-The central design intuition is that **a representation should encode the latent causes that make neighboring observations coherent**. When a current image is ambiguous, temporal relationships provide evidence about motion, persistence, and event history.
+The breakdown by category shows where the inference works. Score, clock, lives and display variables are almost fully recovered, at 0.86 against 0.90 when everything is visible, and the miscellaneous group is essentially unchanged at 0.72 against 0.73. The agent's own position (0.52 against 0.58) and the positions of other objects (0.59 against 0.64) lose a little. Small objects are the hardest, at 0.47 against 0.53, which fits the explanation above. When the only evidence for an object is a handful of pixels, a mask can remove exactly the information that matters.
 
-## Evaluation must probe latent factors
+The masking ratio used during pretraining matters, and not in a monotonic way. Pretraining at 0.4 gives the best result, 0.6 is close behind, and at 0.8, where most of each frame is noise, the mean F1 drops to 0.50. Too little masking does not force the encoder to infer much, and too much leaves too little to infer from. Even at 0.8, MST-DIM still beats standard ST-DIM in every category of variables.
 
-A representation can achieve a low training loss while failing to expose the variables an agent needs. We therefore evaluate learned features through annotated factors in the Atari-based benchmark rather than relying only on reconstruction quality.
+Two games are instructive. Freeway, where a chicken crosses a road full of cars, stays weak. MST-DIM reaches only 0.27 F1 there against 0.81 with full visibility, and drops further at higher masking ratios. Boxing at a ratio of 0.8 fails in a different way. Every method struggles there, and the explanation we gave in the paper is that easy features, such as the clock, satisfy the contrastive objective before the harder variables are learned. A contrastive loss only needs enough information to tell frames apart, and if a ticking clock is enough, the encoder has little reason to keep track of the boxers.
 
-The reported experiments show substantial gains over the supervised comparison in the partially observable setting. More importantly, they demonstrate that self-supervision can exploit temporal structure that is not made explicit by frame-level labels.
+The limits are worth stating plainly. We judged representations with linear probes, not by training agents on top of them, so the link to control performance is still an assumption rather than a result. Severe information loss on small objects remains unsolved, and ST-DIM's local-local term does not fully prevent it. A pretrained initialisation that better matches the probing task is an obvious next step.
 
-## A general lesson
+Random masking is a crude model of partial observability, but it is an honest one, and the same structure appears in the data I work with now. Clinical EEG has noisy and missing channels, recordings from implanted electrodes drift and degrade, and microscopy frames are partly out of focus. In each case the variable of interest is not fully present in any single observation, and the useful representation is the one trained to infer it from what remains. Asking an encoder to recognise a complete future from an incomplete present is a cheap way to make that the training objective.
 
-For robotics, health monitoring, and neural data, the same issue appears in different forms. A sensor snapshot is incomplete; the underlying condition is distributed across time, channels, or modalities. Good representations must therefore act as **compact inference states**, not merely compressed observations.
-
-## References
-
-- [Unsupervised Representation Learning in Partially Observable Atari Games](https://arxiv.org/abs/2303.07437)
-- [Related code repository](https://github.com/mengli11235/MST_DIM)
+The paper, *Unsupervised State Representation Learning in Partially Observable Atari Games*, is also on [arXiv](https://arxiv.org/abs/2303.07437), and the code for MST-DIM is on [GitHub](https://github.com/mengli11235/MST_DIM).

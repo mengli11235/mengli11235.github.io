@@ -2,15 +2,13 @@
 
 A complete GitHub Pages/Jekyll redesign for `www.meng.science`.
 
-## What changed
+## Design
 
-- Research-first home page instead of a generic template.
-- Responsive editorial design with light/dark mode and accessible navigation.
-- Data-driven publication list with client-side filters.
-- Dedicated research, publications, writing, and about pages.
-- Three edited research essays based on public papers.
-- Existing domain, public profile links, and email retained; the portrait was upgraded to a higher-resolution professional version.
-- No proprietary framework or paid service required.
+- Type: Source Serif 4 for headings and essays, Schibsted Grotesk for text and interface. Both are self-hosted latin subsets in `assets/fonts/` (SIL Open Font License), so no third-party font requests.
+- Color: near-white paper, one teal accent (`#0e6b5e`, the same as the CV), amber reserved for data marks. Dark mode inverts the same tokens.
+- One signature figure: the "signal to structure" illustration in `_includes/fig-signal.html`, generated once and drawn on page load. The three research glyphs in `_includes/glyph-*.html` share its line style.
+- Structure is carried by hairlines, timelines, and type scale. No cards, badges, or scroll animations.
+- Social previews use `assets/img/og.png`; favicons are `favicon.svg`, `favicon.png`, and `apple-touch-icon.png`.
 
 ## Local preview
 

@@ -2,12 +2,33 @@
 layout: default
 title: Research
 permalink: /research/
-description: Research themes spanning self-supervised learning, reinforcement learning, geometry-aware representations, and AI for brain and health.
+description: Research themes spanning machine-learning algorithms, from self-supervised and reinforcement learning to geometry-aware modeling, and their application to complex biological signals such as brain-computer interfaces, embryo development, and genomics.
 ---
-<header class="page-hero shell-narrow reveal"><p class="eyebrow">Research</p><h1>Structure is the common thread.</h1><p class="page-deck">My work asks how learned representations can encode the factors that matter for prediction and decision-making—especially when the observations are high-dimensional, partially observable, or weakly labeled.</p></header>
-<section class="research-chapters shell">
-  <article class="chapter reveal"><div class="chapter-number">01</div><div><p class="eyebrow">Representation learning</p><h2>Learning latent structure without labels</h2><p>Self-supervised learning becomes most useful when the pretext objective is aligned with the structure of the downstream problem. My research explores contrastive objectives, masked information, and manifold-aware embedding spaces for state representation.</p><ul class="clean-list"><li>Geometry-aware target spaces</li><li>High-dimensional state representations</li><li>Evaluation through interpretable latent factors</li></ul></div><div class="chapter-graphic geometry-graphic"><span></span><span></span><span></span><span></span><b></b></div></article>
-  <article class="chapter reveal"><div class="chapter-number">02</div><div><p class="eyebrow">Reinforcement learning</p><h2>State, memory, and exploration</h2><p>Agents rarely observe the true state of the world. I study representations for partial observability, mechanisms that preserve behavioral diversity, and transformer-based perception for online reinforcement learning.</p><ul class="clean-list"><li>Partially observable environments</li><li>Ensemble diversity and deep exploration</li><li>Visual transformer backbones for control</li></ul></div><div class="chapter-graphic agent-graphic"><span class="agent"></span><i></i><i></i><i></i><i></i><i></i></div></article>
-  <article class="chapter reveal"><div class="chapter-number">03</div><div><p class="eyebrow">Brain & health AI</p><h2>From general methods to consequential data</h2><p>Neural and clinical data make representation quality especially important: labels are limited, recordings vary across people and devices, and useful features often depend on spatial or temporal relationships. My current work translates robust representation learning into medical and brain-data settings.</p><ul class="clean-list"><li>Self-supervision for neural signals</li><li>Robust spatial and temporal representations</li><li>Deep-learning applications for medical platforms</li></ul></div><div class="chapter-graphic brain-graphic"><svg viewBox="0 0 240 180" aria-hidden="true"><path d="M18 104h35l11-41 17 85 17-112 18 97 15-51 15 29h28l10-20 12 13h37"/><circle cx="64" cy="63" r="4"/><circle cx="98" cy="36" r="4"/><circle cx="131" cy="82" r="4"/></svg></div></article>
+<header class="page-hero shell"><h1>Structure is the common thread.</h1><p class="page-deck">My work asks how learned representations can encode the factors that matter for prediction and decision-making, and how the same algorithms can be made to work on complex biological signals, where observations are high-dimensional, partially observable, or weakly labeled.</p></header>
+<section class="chapters shell">
+  <article class="chapter">
+    <div>
+      <h2>Machine-learning algorithms</h2>
+      <p>I work across the machine-learning toolbox, with a core in self-supervised and representation learning, reinforcement learning, and geometry-aware modeling. The recurring goal is a learning objective aligned with the structure of the downstream problem: contrastive and masked objectives, manifold-aware embedding spaces, and representations that hold up under partial observability, limited memory, and the need to explore.</p>
+      <ul class="topics"><li>Self-supervised and contrastive objectives</li><li>Geometry-aware target spaces</li><li>Partially observable reinforcement learning</li><li>Ensemble diversity and deep exploration</li><li>Transformer backbones for vision and control</li></ul>
+    </div>
+    <figure class="plate-figure">{% include plate-algorithms.html %}<figcaption>An unbalanced atlas: local charts of different sizes cover one learned manifold.</figcaption></figure>
+  </article>
+  <article class="chapter">
+    <div>
+      <h2>Brain-computer interfaces</h2>
+      <p>EEG and intracranial recordings are noisy and high-dimensional, and they vary across people, sessions, and devices, so representation quality decides what a decoder can do. I develop self-supervised and geometry-aware models for neural signals, from brain-to-text speech decoding for implantable BCIs to deep-learning applications for medical platforms and early cognitive-health screening.</p>
+      <ul class="topics"><li>Speech decoding for implantable BCIs</li><li>Self-supervision for EEG and neural signals</li><li>Cross-subject and cross-device robustness</li><li>Deep-learning applications for medical platforms</li></ul>
+    </div>
+    <figure class="plate-figure">{% include plate-bci.html %}<figcaption>Speech decoding: an event window of neural activity is decoded into phonemes, and phonemes into words.</figcaption></figure>
+  </article>
+  <article class="chapter">
+    <div>
+      <h2>Embryo and genomics</h2>
+      <p>In the <a href="https://www.uio.no/english/research/strategic-research-areas/life-science/research/convergence-environments/genesis/index.html">GENESIS convergence environment</a> at the University of Oslo, I develop deep-learning methods for early-embryo data: single-cell transcriptomics, spatially resolved gene expression, epigenetic signatures, and live microscopy. The aim is to identify the gene-expression modules and epigenetic signatures that organize the earliest stages of mammalian development, and to connect them with models of cell behaviour and tissue mechanics.</p>
+      <ul class="topics"><li>Single-cell and spatial transcriptomics</li><li>Epigenetic signatures and chromatin accessibility</li><li>Live-microscopy and cell-behaviour analysis</li><li>Gene regulation and active matter</li></ul>
+    </div>
+    <figure class="plate-figure">{% include plate-embryo.html %}<figcaption>Cells of an early embryo, and the gene-expression module that sets some of them apart.</figcaption></figure>
+  </article>
 </section>
-<section class="section band"><div class="shell collaboration reveal"><div><p class="eyebrow">Collaboration</p><h2>Interested in representation learning, reinforcement learning, or AI for neural data?</h2></div><a class="button button-primary" href="mailto:{{ site.author.email }}">Start a conversation {% include icons.html icon='arrow' %}</a></div></section>
+<section class="collaborate"><div class="shell"><h2>Interested in machine-learning algorithms, brain-computer interfaces, or AI for embryo and genomic data?</h2><a class="button" href="mailto:{{ site.author.email }}">Start a conversation</a></div></section>
