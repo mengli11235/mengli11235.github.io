@@ -2,33 +2,33 @@
 layout: default
 title: Research
 permalink: /research/
-description: Research themes spanning machine-learning algorithms, from self-supervised and reinforcement learning to geometry-aware modeling, and their application to complex biological signals such as brain-computer interfaces, embryo development, and genomics.
+description: Learning state representations for biological dynamical systems, with applications to EEG and brain-computer interfaces, early-embryo development, gene perturbation, and genomics.
 ---
-<header class="page-hero shell"><h1>Structure is the common thread.</h1><p class="page-deck">My work asks how learned representations can encode the factors that matter for prediction and decision-making, and how the same algorithms can be made to work on complex biological signals, where observations are high-dimensional, partially observable, or weakly labeled.</p></header>
+<header class="page-hero shell"><h1>What is the state, and how does it change?</h1><p class="page-deck">My research is about learning state representations for biological dynamical systems. A brain or an embryo is only seen through measurements that are high-dimensional, noisy, and partial, and labels are scarce. I build models that recover the underlying state from such data and follow how it evolves, and I test the methods first where the true state is known.</p></header>
 <section class="chapters shell">
   <article class="chapter">
     <div>
-      <h2>Machine-learning algorithms</h2>
-      <p>I work across the machine-learning toolbox, with a core in self-supervised and representation learning, reinforcement learning, and geometry-aware modeling. The recurring goal is a learning objective aligned with the structure of the downstream problem: contrastive and masked objectives, manifold-aware embedding spaces, and representations that hold up under partial observability, limited memory, and the need to explore.</p>
-      <ul class="topics"><li>Self-supervised and contrastive objectives</li><li>Geometry-aware target spaces</li><li>Partially observable reinforcement learning</li><li>Ensemble diversity and deep exploration</li><li>Transformer backbones for vision and control</li></ul>
-    </div>
-    <figure class="plate-figure">{% include plate-algorithms.html %}<figcaption>An unbalanced atlas: local charts of different sizes cover one learned manifold.</figcaption></figure>
-  </article>
-  <article class="chapter">
-    <div>
-      <h2>Brain-computer interfaces</h2>
-      <p>EEG and intracranial recordings are noisy and high-dimensional, and they vary across people, sessions, and devices, so representation quality decides what a decoder can do. I develop self-supervised and geometry-aware models for neural signals, from brain-to-text speech decoding for implantable BCIs to deep-learning applications for medical platforms and early cognitive-health screening.</p>
-      <ul class="topics"><li>Speech decoding for implantable BCIs</li><li>Self-supervision for EEG and neural signals</li><li>Cross-subject and cross-device robustness</li><li>Deep-learning applications for medical platforms</li></ul>
+      <h2>Brain dynamics and brain-computer interfaces</h2>
+      <p>EEG and intracranial recordings are noisy and high-dimensional, and they vary across people, sessions, and devices, so the quality of the learned brain-state representation decides what a decoder can do. In the AI-Mind project I was responsible for the machine learning on high-density EEG from 1,000 participants in four countries, where self-supervised pre-training raised balanced accuracy by more than 10% in some experimental designs. As algorithm lead at Neuralicorn, I led a speech-decoding experiment for an implantable BCI, from the experimental paradigm to clinical data collection in hospital.</p>
+      <ul class="topics"><li>Speech decoding for implantable BCIs</li><li>Self-supervision for EEG and neural signals</li><li>Longitudinal brain-network dynamics</li><li>Cross-subject and cross-device robustness</li></ul>
     </div>
     <figure class="plate-figure">{% include plate-bci.html %}<figcaption>Speech decoding: an event window of neural activity is decoded into phonemes, and phonemes into words.</figcaption></figure>
   </article>
   <article class="chapter">
     <div>
-      <h2>Embryo and genomics</h2>
-      <p>In the <a href="https://www.uio.no/english/research/strategic-research-areas/life-science/research/convergence-environments/genesis/index.html">GENESIS convergence environment</a> at the University of Oslo, I develop deep-learning methods for early-embryo data: single-cell transcriptomics, spatially resolved gene expression, epigenetic signatures, and live microscopy. The aim is to identify the gene-expression modules and epigenetic signatures that organize the earliest stages of mammalian development, and to connect them with models of cell behaviour and tissue mechanics.</p>
-      <ul class="topics"><li>Single-cell and spatial transcriptomics</li><li>Epigenetic signatures and chromatin accessibility</li><li>Live-microscopy and cell-behaviour analysis</li><li>Gene regulation and active matter</li></ul>
+      <h2>Embryo development and genomics</h2>
+      <p>In the <a href="https://www.uio.no/english/research/strategic-research-areas/life-science/research/convergence-environments/genesis/index.html">GENESIS convergence environment</a> at the University of Oslo, I am responsible for designing the machine-learning models for gene perturbation, which model how perturbing a gene shifts cell and embryo states. I also develop deep-learning methods for early-embryo data: single-cell transcriptomics, spatially resolved gene expression, epigenetic signatures, and live microscopy. The aim is to identify the gene-expression modules and epigenetic signatures that organize the earliest stages of mammalian development, and to connect them with models of cell behaviour and tissue mechanics.</p>
+      <ul class="topics"><li>Gene-perturbation modelling</li><li>Single-cell and spatial transcriptomics</li><li>Epigenetic signatures and chromatin accessibility</li><li>Live-microscopy and cell-behaviour analysis</li></ul>
     </div>
     <figure class="plate-figure">{% include plate-embryo.html %}<figcaption>Cells of an early embryo, and the gene-expression module that sets some of them apart.</figcaption></figure>
   </article>
+  <article class="chapter">
+    <div>
+      <h2>State representation learning</h2>
+      <p>The methods come from my PhD. I work across the machine-learning toolbox, with a core in self-supervised and representation learning, reinforcement learning, and geometry-aware modeling. The recurring goal is a learning objective aligned with the structure of the problem: contrastive and masked objectives, manifold-aware embedding spaces, and representations that hold up under partial observability, limited memory, and the need to explore. Atari games are the test bed because their true state is known, so a learned representation can be measured against it.</p>
+      <ul class="topics"><li>Self-supervised and contrastive objectives</li><li>Geometry-aware target spaces</li><li>Partially observable reinforcement learning</li><li>Ensemble diversity and deep exploration</li><li>Transformer backbones for vision and control</li></ul>
+    </div>
+    <figure class="plate-figure">{% include plate-algorithms.html %}<figcaption>An unbalanced atlas: local charts of different sizes cover one learned manifold.</figcaption></figure>
+  </article>
 </section>
-<section class="collaborate"><div class="shell"><h2>Interested in machine-learning algorithms, brain-computer interfaces, or AI for embryo and genomic data?</h2><a class="button" href="mailto:{{ site.author.email }}">Start a conversation</a></div></section>
+<section class="collaborate"><div class="shell"><h2>Interested in brain-computer interfaces, AI for embryo and genomic data, or state representation learning?</h2><a class="button" href="mailto:{{ site.author.email }}">Start a conversation</a></div></section>

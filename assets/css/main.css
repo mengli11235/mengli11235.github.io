@@ -115,6 +115,7 @@ strong{font-weight:600}
 /* Sections */
 .section{padding:96px 0 0}
 .section-head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;margin-bottom:34px}
+.section-note{margin:-18px 0 30px;max-width:64ch;font-size:16px;color:var(--ink-2)}
 
 /* Home: directions */
 .directions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
@@ -302,6 +303,7 @@ strong{font-weight:600}
   .lede{font-size:17px}
   .section{padding-top:72px}
   .section-head{flex-direction:column;align-items:flex-start;gap:8px;margin-bottom:24px}
+  .section-note{margin:-10px 0 22px;font-size:15px}
   .pub-row{grid-template-columns:1fr;gap:6px;padding:22px 0}
   .pub-row .pub-year{padding-top:0}
   .pub-links{flex-direction:row;flex-wrap:wrap;gap:6px 16px;padding-top:8px}

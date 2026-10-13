@@ -1,10 +1,10 @@
 - date: Aug 2026
-  text: Joined the GENESIS convergence environment at the University of Oslo as a Postdoctoral Researcher, developing deep-learning methods for early-embryo and genomic data.
+  text: Joined the GENESIS convergence environment at the University of Oslo as a Postdoctoral Researcher, responsible for designing machine-learning models for gene perturbation in the early embryo.
   url: https://www.uio.no/english/research/strategic-research-areas/life-science/research/convergence-environments/genesis/index.html
 - date: Summer 2026
   text: Led the speech-decoding experiment at implantable-BCI company Neuralicorn (西湖灵犀) as algorithm lead, from experimental design and code framework to clinical data collection in hospital.
 - date: Mar 2026
-  text: Joined eBRAIN-Health at the University of Oslo, developing deep-learning applications for medical platforms.
+  text: Joined eBRAIN-Health at the University of Oslo, building the automated EEG pipeline for the AI-Mind cohort.
 - date: Dec 2025
   text: Presented AI-Mind's machine-learning results to the European Commission reviewers at the 11th General Assembly in Rome, and wrote the project's EU report on machine learning.
   url: https://www.ai-mind.eu/blog/2025/12/
@@ -12,7 +12,7 @@
   text: Defended my PhD thesis at the University of Oslo.
   url: https://www.mn.uio.no/its/forskning/arrangementer/disputaser/2025/li-meng.html
 - date: Mar 2025
-  text: Joined the AI-MIND project at OsloMet, working on deep learning for early dementia detection.
+  text: Joined the AI-Mind project at OsloMet, responsible for the machine learning on EEG for early dementia-risk screening.
 - date: May 2024
   text: Presented “State Representation Learning Using an Unbalanced Atlas” at ICLR 2024.
   url: https://openreview.net/forum?id=cWdAYDLmPa
