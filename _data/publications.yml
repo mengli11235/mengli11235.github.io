@@ -1,3 +1,13 @@
+- year: 2026
+  featured: true
+  title: Manifold Capacity Regularization for State Representation Learning and Self-Supervised Learning
+  authors: Li Meng, Morten Goodwin, Anis Yazidi, Paal Engelstad
+  venue: Nordic Machine Intelligence
+  type: Journal
+  summary: Introduces C+, a manifold-capacity regularizer that raises representational diversity at the batch level. It improves DIM-UA on Atari state representations and gives gains for SimCLR and Barlow Twins across datasets.
+  tags: [Manifold capacity, Self-supervised learning, State representation learning]
+  links:
+    paper: https://scholar.google.com/citations?view_op=view_citation&hl=zh-CN&user=rsFvtdoAAAAJ&citation_for_view=rsFvtdoAAAAJ:mB3voiENLucC
 - year: 2024
   featured: true
   title: State Representation Learning Using an Unbalanced Atlas
@@ -11,16 +21,6 @@
     arxiv: https://arxiv.org/abs/2305.10267
     code: https://github.com/mengli11235/DIM-UA
     article: /writing/unbalanced-atlas/
-- year: 2024
-  featured: true
-  title: Maximum Manifold Capacity Representations in State Representation Learning
-  authors: Li Meng, Morten Goodwin, Anis Yazidi, Paal Engelstad
-  venue: arXiv preprint
-  type: Preprint
-  summary: Extends manifold-aware state representation learning with a nuclear-norm objective and a more efficient route to manifold-capacity regularization.
-  tags: [Manifold capacity, Representation learning, Atari]
-  links:
-    arxiv: https://arxiv.org/abs/2405.13848
 - year: 2024
   featured: false
   title: A Manifold Representation of the Key in Vision Transformers
