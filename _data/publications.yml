@@ -7,7 +7,7 @@
   summary: Introduces C+, a manifold-capacity regularizer that raises representational diversity at the batch level. It improves DIM-UA on Atari state representations and gives gains for SimCLR and Barlow Twins across datasets.
   tags: [Manifold capacity, Self-supervised learning, State representation learning]
   links:
-    paper: https://scholar.google.com/citations?view_op=view_citation&hl=zh-CN&user=rsFvtdoAAAAJ&citation_for_view=rsFvtdoAAAAJ:mB3voiENLucC
+    paper: https://doi.org/10.5617/nmi.13235
 - year: 2024
   featured: true
   title: State Representation Learning Using an Unbalanced Atlas
