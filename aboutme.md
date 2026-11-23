@@ -13,6 +13,9 @@ I'm a Postdoctoral Researcher at the University of Oslo, working in the [GENESIS
 - **Postdoctoral Researcher, GENESIS** (2026 - present) - University of Oslo, Norway  
   *Responsible for designing the machine-learning models for gene perturbation, and for deep learning on early-embryo and genomic data. [University of Oslo profile](https://www.med.uio.no/imb/english/people/aca/limeng/)*
 
+- **Virtual Cell Challenge 2026, team UiO** (2026) - Arc Institute  
+  *Predicted single-cell responses to gene knockdowns in cell lines never seen in training. Finished 41st of 807*
+
 - **Algorithm Lead, Neuralicorn (西湖灵犀)** (2026) - Implantable brain-computer interfaces  
   *Led a speech-decoding BCI experiment end to end, from experimental design to clinical data collection*
 
