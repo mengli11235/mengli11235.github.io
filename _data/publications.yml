@@ -8,6 +8,18 @@
   tags: [Manifold capacity, Self-supervised learning, State representation learning]
   links:
     paper: https://doi.org/10.5617/nmi.13235
+- year: 2026
+  featured: false
+  title: "Effect-table transfer, call lists and capped-MSE calibration: an attributed account of a Virtual Cell Challenge 2026 entry"
+  authors: Li Meng, Team UiO
+  venue: Technical report
+  type: Preprint
+  summary: Team UiO's entry to the Virtual Cell Challenge 2026, ranked 41st of 807. Effects measured in public screens are moved onto unseen cell lines, every component is attributed to its owner, and the entry is compared with the three winning ones.
+  tags: [Perturbation prediction, Single-cell, Foundation models]
+  links:
+    paper: /assets/papers/vcc2026-li-meng-team-uio.pdf
+    code: https://github.com/mengli11235/vcc2026
+    article: /writing/a-copy-of-the-measurements/
 - year: 2024
   featured: true
   title: State Representation Learning Using an Unbalanced Atlas

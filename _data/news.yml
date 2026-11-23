@@ -1,6 +1,6 @@
 - date: Nov 2026
-  text: Finished 41st of 807 on the final leaderboard of the Virtual Cell Challenge 2026, run by the Arc Institute, with team UiO. The task was to predict how cells respond to gene knockdowns in cell lines never seen in training.
-  url: https://virtualcellchallenge.org
+  text: Finished 41st of 807 on the final leaderboard of the Virtual Cell Challenge 2026, run by the Arc Institute, with team UiO. The paper, a timeline and what we learned are on the project page.
+  url: /vcc2026/
 - date: Aug 2026
   text: Joined the GENESIS convergence environment at the University of Oslo as a Postdoctoral Researcher, responsible for designing machine-learning models for gene perturbation in the early embryo.
   url: https://www.uio.no/english/research/strategic-research-areas/life-science/research/convergence-environments/genesis/index.html

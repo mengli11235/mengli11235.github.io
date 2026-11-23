@@ -1,0 +1,244 @@
+---
+layout: default
+title: Virtual Cell Challenge 2026
+permalink: /vcc2026/
+description: Team UiO's entry to the Arc Institute's Virtual Cell Challenge 2026, ranked 41st of 807. The paper, how the entry works, a timeline, what we learned and what we would change.
+og_image: /assets/img/vcc/og-vcc2026.png
+---
+{% assign paper = '/assets/papers/vcc2026-li-meng-team-uio.pdf' | relative_url %}
+{% assign repo = 'https://github.com/mengli11235/vcc2026' %}
+<section class="vcc-hero shell">
+  <div>
+    <p class="vcc-eyebrow">Virtual Cell Challenge 2026 · Arc Institute · Team UiO</p>
+    <h1>Predicting 300 gene knockdowns in cell lines we had never seen perturbed.</h1>
+    <p class="lede">For each of three new cell lines we had only its control cells, and had to predict how it responds to 300 CRISPRi knockdowns. Our entry moves effects measured in public screens onto each line's own controls, and judges every learned part against a matched control. It finished 41st of 807.</p>
+    <div class="actions">
+      <a class="button" href="{{ paper }}">Read the paper (PDF)</a>
+      <a class="text-link" href="{{ repo }}">Code on GitHub</a>
+      <a class="text-link" href="{{ '/writing/a-copy-of-the-measurements/' | relative_url }}">The story behind it</a>
+    </div>
+    <div class="vcc-stats">
+      <div><p class="vcc-num">41<span>/807</span></p><p class="vcc-lab">final rank</p></div>
+      <div><p class="vcc-num">0.2594</p><p class="vcc-lab">final score</p></div>
+      <div><p class="vcc-num">360,000</p><p class="vcc-lab">cells predicted</p></div>
+      <div><p class="vcc-num">1/10</p><p class="vcc-lab">of the gain from foundation models</p></div>
+    </div>
+  </div>
+  <figure class="hero-figure">
+    {% include vcc-fig-transfer.html %}
+    <figcaption class="fig-caption">The same knockdown measured in five public screens is shrunk for noise, fused and moved onto the new line's own control cells, which gives 400 predicted cells per knockdown.</figcaption>
+  </figure>
+</section>
+
+<section class="shell">
+  <article class="vcc-paper">
+    <div>
+      <p class="vcc-kicker">The paper</p>
+      <h2><a href="{{ paper }}">Effect-table transfer, call lists and capped-MSE calibration: an attributed account of a Virtual Cell Challenge 2026 entry</a></h2>
+      <p class="vcc-authors"><strong>Li Meng</strong>, Team UiO</p>
+      <p class="vcc-meta">Technical report · November 2026 · 16 pages</p>
+      <p class="vcc-abstract">A full account of our entry. For every part we say whose it is and what it added on our local folds. We list what failed and compare the entry with the three winning ones. A 600-line numpy re-implementation of our steps comes with it.</p>
+      <div class="actions">
+        <a class="button" href="{{ paper }}" download>Download PDF</a>
+        <a class="text-link" href="#read">Read it on this page</a>
+        <a class="text-link" href="{{ repo }}">Code</a>
+        <a class="text-link" href="#cite">Cite</a>
+      </div>
+    </div>
+    <a class="vcc-cover" href="{{ paper }}" aria-label="Open the paper as a PDF"><img src="{{ '/assets/img/vcc/paper-page1.webp' | relative_url }}" alt="First page of the paper" width="760" height="1075" loading="lazy"></a>
+  </article>
+</section>
+
+<section class="section shell">
+  <div class="section-head"><h2>The task</h2><a class="text-link" href="https://virtualcellchallenge.org">Challenge website</a></div>
+  <div class="vcc-task">
+    <div>
+      <p class="vcc-text">The Virtual Cell Challenge 2026 asked teams to predict, zero-shot, how three human cell lines respond to CRISPRi knockdowns. Nothing about the perturbed cells was given. Each line came only with its unperturbed controls, and the prediction had to be a full set of single cells, scored by the evaluator cell-eval2.</p>
+      <div class="vcc-facts">
+        <div><p class="vcc-num">18,400</p><p class="vcc-lab">control cells per new line, over 18,533 genes</p></div>
+        <div><p class="vcc-num">360,000</p><p class="vcc-lab">cells to generate: 400 for each of 300 knockdowns in each of 3 lines</p></div>
+        <div><p class="vcc-num">6</p><p class="vcc-lab">metrics, each scaled so that 0 is the line's mean and 1 an independent replicate</p></div>
+      </div>
+      <dl class="vcc-lines">
+        <div><dt>Validation lines</dt><dd>Cal-33, HeLa, Jurkat. Scored on a public board that froze on 22 October.</dd></div>
+        <div><dt>Test lines</dt><dd>AC16, MOLM-13, U-87 MG. Scored once, on each team's final entry.</dd></div>
+        <div><dt>What made transfer possible</dt><dd>All but one of the 300 test targets had been knocked down before in some other cell line.</dd></div>
+      </dl>
+    </div>
+    <figure class="vcc-photo">
+      <img src="{{ '/assets/img/vcc/hela-cells.webp' | relative_url }}" alt="Fluorescence micrograph of HeLa cells with green actin filaments, red vimentin and blue nuclei" width="1000" height="909" loading="lazy">
+      <figcaption>HeLa cells, one of the three validation lines, stained for actin (green), vimentin (red) and DNA (blue). Photo by GerryShaw, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:HeLa_cells_stained_with_antibody_to_actin_%28green%29_%2C_vimentin_%28red%29_and_DNA_%28blue%29.jpg">Wikimedia Commons</a>.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="section shell">
+  <div class="section-head"><h2>A copy of the measurements is hard to beat</h2></div>
+  <div class="vcc-split">
+    <div class="vcc-text">
+      <p>Before building anything, we tried perturbation models as predictors. On our first local fold, copying the measured effects of the same knockdowns in another line scored 0.286. Stack, a model trained to predict such effects, scored below zero, both zero-shot and fine-tuned. State's perturbation model landed about 0.39 below the plain mean of the measured tables.</p>
+      <p>So we built on measured effects, and asked every learned part to prove itself against them.</p>
+    </div>
+    <figure class="vcc-chart" aria-label="Scores on the first local fold">
+      <div class="vcc-zero">
+        <div class="vcc-zrow"><p>Copy the HEK293T effects</p><div class="vcc-ztrack"><span class="vcc-zbar pos" style="width:72%"></span></div><p class="vcc-val">0.286</p></div>
+        <div class="vcc-zrow"><p>Stack, zero-shot</p><div class="vcc-ztrack"><span class="vcc-zbar neg" style="width:3%"></span></div><p class="vcc-val">−0.012</p></div>
+        <div class="vcc-zrow"><p>Stack, fine-tuned</p><div class="vcc-ztrack"><span class="vcc-zbar neg" style="width:12.3%"></span></div><p class="vcc-val">−0.049</p></div>
+      </div>
+      <figcaption class="fig-caption">Absolute scores on our first local fold, HCT116. The line marks zero.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="section shell">
+  <div class="section-head"><h2>How the entry works</h2></div>
+  <p class="section-note">AtlasShift, a public baseline under the MIT licence, gave us the skeleton: effects measured in public screens, carried onto each line's control cells, and a generator that draws the cells. All our changes sit between its profile step and its generator.</p>
+  <div class="vcc-legend"><span class="ours">Ours</span><span class="others">AtlasShift's</span></div>
+  <ol class="vcc-steps">
+    <li class="others"><p class="vcc-step-n">1 · AtlasShift</p><h3>Measured effects</h3><p>Per-knockdown effects from public screens, in a mean space and a bulk space, less the response common to all knockdowns.</p></li>
+    <li><p class="vcc-step-n">2 · Ours</p><h3>Noise-aware tables</h3><p>Each source is shrunk by its own sampling noise, then sources are fused by direction so each has the same say.</p></li>
+    <li><p class="vcc-step-n">3 · Ours</p><h3>Completing missing genes</h3><p>The K562 screen measures 7,681 genes. A regression on the new line's control axes fills the rest, where 47% of the truth's energy lay in our folds.</p></li>
+    <li class="others"><p class="vcc-step-n">4 · AtlasShift</p><h3>Desired profiles</h3><p>Effects become target profiles on the new line's controls, with a promoter prior and a CD4 T-cell family.</p></li>
+    <li><p class="vcc-step-n">5 · Ours</p><h3>Foundation-model heads</h3><p>TabPFN heads on frozen embeddings from 16 foundation models. They may only amplify changes the table already makes.</p></li>
+    <li><p class="vcc-step-n">6 · Ours</p><h3>Bulk path</h3><p>Remove 15 control axes, set a gain per line, mix with a pooled table, and add direction-only tables from external predictors such as UPM and PIE.</p></li>
+    <li><p class="vcc-step-n">7 · Ours</p><h3>Call list and floor</h3><p>Genes just past a per-gene detection line are lifted in the predicted direction. Listed genes whose direction disagrees are set to no change.</p></li>
+    <li><p class="vcc-step-n">8 · Ours</p><h3>Fill rule</h3><p>Each line's amplitude is set from an estimate of the capped MSE's budget-to-claim ratio, explained below.</p></li>
+    <li class="others"><p class="vcc-step-n">9 · AtlasShift</p><h3>Count generator</h3><p>Draws 400 cells per knockdown from the new line's own controls to match both profiles.</p></li>
+  </ol>
+  <p class="vcc-sources"><strong>Five measured sources.</strong> K562 genome-wide screen (weight 2), HCT116 and HEK293T from X-Atlas/Orion (1 each), the 2025 challenge's H1 cells (2) and KOLF2.1J (1).</p>
+
+  <div class="vcc-split vcc-capped">
+    <div class="vcc-text">
+      <h3>Filling to the kink</h3>
+      <p>The mse metric gives a prediction a sampling correction, capped by a budget equal to the prediction's own spread across knockdowns. In a toy model with one direction, extra amplitude below the cap costs nothing, and only its alignment with the truth counts. A weakly aligned prediction should therefore be filled exactly to the kink.</p>
+      <p>Our fill rule estimates the budget-to-claim ratio from the submission alone and scales each line toward 1.04. An earlier package sat at about 0.72, well below the kink.</p>
+    </div>
+    <figure class="vcc-chart">
+      {% include vcc-fig-capped.html %}
+      <figcaption class="fig-caption">Toy model of cell-eval2's capped MSE (ours, with the evaluator's definitions of budget and claim).</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="section shell">
+  <div class="section-head"><h2>Results</h2></div>
+  <div class="vcc-results">
+    <figure class="vcc-chart">
+      <p class="vcc-chart-title">Final leaderboard, scored on AC16, MOLM-13 and U-87 MG</p>
+      <div class="vcc-board">
+        <div class="vcc-row"><p><span>1</span>BioInsight AI Lab (Illumina)</p><div class="vcc-track"><span style="width:97.8%"></span></div><p class="vcc-val">0.4399</p></div>
+        <div class="vcc-row"><p><span>2</span>FlowState</p><div class="vcc-track"><span style="width:74.4%"></span></div><p class="vcc-val">0.3348</p></div>
+        <div class="vcc-row"><p><span>3</span>X-team (Xaira)</p><div class="vcc-track"><span style="width:72.5%"></span></div><p class="vcc-val">0.3263</p></div>
+        <div class="vcc-row"><p><span>10</span>Rank 10</p><div class="vcc-track"><span style="width:66.7%"></span></div><p class="vcc-val">0.3002</p></div>
+        <div class="vcc-row ours"><p><span>41</span>Team UiO (ours)</p><div class="vcc-track"><span style="width:57.6%"></span></div><p class="vcc-val">0.2594</p></div>
+        <div class="vcc-row"><p><span>100</span>Rank 100</p><div class="vcc-track"><span style="width:49.1%"></span></div><p class="vcc-val">0.2209</p></div>
+        <div class="vcc-row"><p><span></span>Median of 807</p><div class="vcc-track"><span style="width:22.6%"></span></div><p class="vcc-val">0.1018</p></div>
+      </div>
+      <figcaption class="fig-caption">Team names follow the organisers' wrap-up. Our entry was listed as Spirited.</figcaption>
+    </figure>
+    <ul class="vcc-notes">
+      <li><strong>One of a band.</strong> Thirteen other entries lie within 0.004 of ours, ranks 33 to 46. Redrawing an entry's cells moved its score by up to 0.004.</li>
+      <li><strong>Validation board.</strong> Our best upload scored 0.1882, rank 347 of 1,635 on the frozen board.</li>
+      <li><strong>Forecast.</strong> Our local folds had predicted about 0.32. The forecast rested on one pair of scores and on folds reused for hundreds of comparisons.</li>
+    </ul>
+  </div>
+
+  <div class="vcc-two">
+    <figure class="vcc-chart">
+      <p class="vcc-chart-title">Where our 0.1804 gap to first place sits</p>
+      <div class="vcc-stack" role="img" aria-label="mse 37%, nmae 21%, reach 20%, fid 9%, pds 6%, jac 6%">
+        <span class="s1" style="flex:37">mse 37%</span><span class="s2" style="flex:21">nmae 21%</span><span class="s3" style="flex:20">reach 20%</span><span class="s4" style="flex:9"></span><span class="s5" style="flex:6"></span><span class="s6" style="flex:6"></span>
+      </div>
+      <p class="vcc-keys"><span class="s4"></span>fid 9% <span class="s5"></span>pds 6% <span class="s6"></span>jac 6%</p>
+      <figcaption class="fig-caption">Shares of the gap in the mean of the six metrics, rounded. The mse term reads the size and direction of every predicted change.</figcaption>
+    </figure>
+    <figure class="vcc-chart">
+      <p class="vcc-chart-title">Where our gain came from</p>
+      <div class="vcc-stack vcc-stack-fm" role="img" aria-label="Foundation models about 12% of the gain, other steps about 88%">
+        <span class="fm" style="flex:12">12%</span><span class="rest" style="flex:88">measured effects, transfer and calibration, 88%</span>
+      </div>
+      <p class="vcc-keys"><span class="fm"></span>steps that added or changed a foundation-model part</p>
+      <figcaption class="fig-caption">Counted by what each step changed, over three stages on different scales, so the split is rough. Removing the whole head on the 27 October base changed the score by −0.0003, not separable from zero.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="section shell">
+  <div class="section-head"><h2>Timeline</h2></div>
+  <div class="vcc-phases" role="img" aria-label="Validation phase from 13 to 22 October, final build from 22 October to 5 November, waiting for results until 19 November, write-up until 23 November">
+    <div class="vcc-phase p1" style="flex:9"><span>Validation phase</span></div>
+    <div class="vcc-phase p2" style="flex:14"><span>Final build on the test lines</span></div>
+    <div class="vcc-phase p3" style="flex:14"><span>Waiting for results</span></div>
+    <div class="vcc-phase p4" style="flex:4"><span>Write-up</span></div>
+  </div>
+  <div class="vcc-ticks"><span style="left:0">13 Oct</span><span style="left:22%">22 Oct</span><span style="left:56.1%">5 Nov</span><span style="left:90.2%">19 Nov</span></div>
+  <ol class="vcc-timeline">
+    <li><time>13 Oct</time><div><h3>Team UiO starts</h3><p>The first uploads, built from knockdown effects alone, score below zero on the validation board.</p></div></li>
+    <li><time>13 to 22 Oct</time><div><h3>Validation phase</h3><p>Effect tables and foundation-model heads bring the board score to 0.078. Adopting AtlasShift's count generator then lifts it to 0.182, our largest jump and not our own work.</p></div></li>
+    <li><time>20 Oct</time><div><h3>Similarity weights tested</h3><p>Weighting sources by how close their controls are to the new line helps the two sibling folds and hurts the stem-cell fold. We keep fixed weights.</p></div></li>
+    <li class="key"><time>22 Oct</time><div><h3>Validation board freezes</h3><p>Our best upload scores 0.1882, rank 347 of 1,635. The three test lines are released.</p></div></li>
+    <li><time>27 Oct</time><div><h3>What the heads are worth</h3><p>On the package of 27 October, removing the whole foundation-model head changes the score by −0.0003, not separable from zero.</p></div></li>
+    <li><time>3 to 4 Nov</time><div><h3>Why not all the data at once?</h3><p>The question is raised twice inside the team. Our answer stays inside the fixed pipeline.</p></div></li>
+    <li class="key"><time>5 Nov</time><div><h3>Final entry submitted</h3><p>The bulk mix, the call list with its near-line axes, external tables and the fill rule are in.</p></div></li>
+    <li><time>6 Nov</time><div><h3>First draft of the report</h3><p>Every component attributed to its owner, with all negative results.</p></div></li>
+    <li class="win"><time>19 Nov</time><div><h3>Final results</h3><p>0.2594, rank 41 of 807. The organisers publish the winners and their methods.</p></div></li>
+    <li><time>23 Nov</time><div><h3>Report revised</h3><p>A comparison with the three winning entries, and what we would change.</p></div></li>
+  </ol>
+</section>
+
+<section class="section shell">
+  <div class="section-head"><h2>What we learned</h2></div>
+  <div class="vcc-lessons">
+    <article><p class="vcc-big">1</p><h3>Measured effects, carried over with care, do most of the work.</h3><p>All three winning entries share our structure: effects measured in other cell lines, adapted to the new line through its control cells. The organisers concluded that reference data and the care of its transfer counted at least as much as architecture.</p></article>
+    <article><p class="vcc-big">2</p><h3>Test data the way it will be used.</h3><p>We added public tables one at a time to a fixed average. One table moves an average little, so each read a few thousandths and was dropped. Data meant for a model should go in as a batch, with whole cell lines held out.</p></article>
+    <article><p class="vcc-big">3</p><h3>A model earns credit only against a control of the same form.</h3><p>A head of the same form without the single-cell embeddings added as much as one with them. Without that control we would have credited the embeddings.</p></article>
+    <article><p class="vcc-big">4</p><h3>Ask why a model predicts what it does.</h3><p>PIE's detection probabilities led us to the call floor, which stayed in the entry after PIE's own directions had been replaced.</p></article>
+  </div>
+</section>
+
+<section class="section shell">
+  <div class="section-head"><h2>What we would change</h2></div>
+  <p class="section-note">These follow from comparing our entry with the winners. None of them was run, and we do not know their size.</p>
+  <div class="vcc-change">
+    <ol class="vcc-changes">
+      <li><h3>More practice lines, from more than one lab</h3><p>Two of our three folds came from one lab and shared 299 of 300 targets. Every learned step was selected on what amounts to two cell contexts.</p></li>
+      <li><h3>A response model trained across many public screens</h3><p>The second-place entry learned from 86 cell contexts with whole contexts held out. Our heads were fitted on seven.</p></li>
+      <li><h3>Source weights from control similarity</h3><p>The first- and third-place entries weight each reference by how close its controls are to the new line. We tried it with four sources and kept fixed weights.</p></li>
+      <li><h3>More public data, used as training contexts</h3><p>We judged about 30 further tables, most of them one at a time, and kept none.</p></li>
+    </ol>
+    <aside class="vcc-first">
+      <p class="vcc-kicker">Where we would look first</p>
+      <p>The mse term carries 37% of our distance to first place, and it reads the size of every predicted change. Our sizes came from rules: one gain per line and a fill computed from the metric's budget. A size learned per gene and knockdown is the first thing we would try.</p>
+    </aside>
+  </div>
+</section>
+
+<section class="section shell" id="read">
+  <div class="section-head"><h2>Read the paper</h2><a class="text-link" href="{{ paper }}" download>Download PDF</a></div>
+  <div class="vcc-reader">
+    <object data="{{ paper }}#view=FitH" type="application/pdf" aria-label="The paper as a PDF">
+      <div class="vcc-reader-fallback"><img src="{{ '/assets/img/vcc/paper-page1.webp' | relative_url }}" alt="" width="760" height="1075" loading="lazy"><p>This browser cannot show the PDF inside the page.</p><a class="button" href="{{ paper }}">Open the paper (PDF, 16 pages)</a></div>
+    </object>
+  </div>
+  <p class="vcc-reader-mobile"><a class="button" href="{{ paper }}">Open the paper (PDF, 16 pages)</a></p>
+  <div class="vcc-cite" id="cite">
+    <p class="vcc-kicker">Cite</p>
+<pre><code>@techreport{meng2026vcc,
+  title       = {Effect-table transfer, call lists and capped-{MSE} calibration:
+                 an attributed account of a {Virtual Cell Challenge} 2026 entry},
+  author      = {Meng, Li and {Team UiO}},
+  institution = {University of Oslo},
+  year        = {2026},
+  month       = nov,
+  url         = {https://www.meng.science/vcc2026/}
+}</code></pre>
+  </div>
+</section>
+
+<section class="section shell vcc-credits">
+  <div class="section-head"><h2>Built on others' work</h2></div>
+  <p>AtlasShift (MIT) gave the skeleton and the count generator. cell-eval2 is the evaluator, and our fill rule uses a property of its capped MSE. Sidechain's pooled posterior sets the direction of the call list. The idea of calls just past the detection line also appears in the public T3V200 recipe, and the idea of removing control axes came from board notes of several teams. The foundation models, TabPFN, ESM-2, GenePT, UPM, PIE and every dataset belong to their authors. The final entry contains numbers from models under non-commercial licences, so it is for non-commercial use. Our code is MIT.</p>
+  <p>Thanks to the Arc Institute for running the challenge, and to the teams who shared notes on the board.</p>
+</section>
+
+<section class="collaborate"><div class="shell"><h2>Working on perturbation prediction or virtual cells?</h2><a class="button" href="mailto:{{ site.author.email }}">Start a conversation</a></div></section>
